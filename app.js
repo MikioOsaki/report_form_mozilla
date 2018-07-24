@@ -9,6 +9,7 @@ var administrationRouter = require('./routes/administration');  //Import routes 
 var userRouter = require('./routes/user');
 
 var app = express();
+app.locals.moment = require('moment'); //to use moment in pug file
 
 //Set up mongoose connection
 var mongoose = require('mongoose');

@@ -5,9 +5,12 @@ block content
   
   ul
   each report in report_list
-    li 
-      a(href=report.url) #{report.id} 
-      |  #{report.subject}, {Date}
+    li
+      |Subject: 
+      a(href=report.url) #{report.subject}, 
+      |Bathingspot: 
+      a(href=report.bathingspot.url) #{report.bathingspot.name}, 
+      |Date: #{report.date}
 
   else
     li There are no reports.

@@ -27,7 +27,7 @@ exports.index = function (req, res) {
 // Display list of all Reports.
 exports.report_list = function (req, res, next) {
 
-    Report.find({}, 'subject bathingspot')
+    Report.find({}, 'subject bathingspot date category description')
         .populate('bathingspot')
         .exec(function (err, report_list) {
             if (err) { return next(err); }
@@ -92,28 +92,30 @@ exports.report_create_post = [
         next();
     },
 
-    // Validate fields.
-    body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
-    body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
-    body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
+       // Validate fields.
+       body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
+       body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
+       body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
+   
+       // Sanitize fields (using wildcard).
+       sanitizeBody('*').trim().escape(),
+   
+       // Process request after validation and sanitization.
+       (req, res, next) => {
+   
+           // Extract the validation errors from a request.
+           const errors = validationResult(req);
+   
+           // Create a Report object with escaped and trimmed data.
+           var report = new Report(
+               {
+                   subject: req.body.subject,
+                   bathingspot: req.body.bathingspot,
+                   description: req.body.description,
+                   category: req.body.category,
+                   date: req.body.date
 
-    // Sanitize fields (using wildcard).
-    sanitizeBody('*').trim().escape(),
-
-    // Process request after validation and sanitization.
-    (req, res, next) => {
-
-        // Extract the validation errors from a request.
-        const errors = validationResult(req);
-
-        // Create a Report object with escaped and trimmed data.
-        var report = new Report(
-            {
-                subject: req.body.subject,
-                bathingspot: req.body.bathingspot,
-                description: req.body.description,
-                category: req.body.category
-            });
+               });
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/error messages.

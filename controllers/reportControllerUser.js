@@ -74,7 +74,8 @@ exports.report_create_post = [
                 subject: req.body.subject,
                 bathingspot: req.body.bathingspot,
                 description: req.body.description,
-                category: req.body.category
+                category: req.body.category,
+                date: req.body.date
             });
 
         if (!errors.isEmpty()) {

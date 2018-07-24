@@ -6,6 +6,7 @@ block content
   
   p #[strong bathingspot:] 
     a(href=report.bathingspot.url) #{report.bathingspot.name}
+  p #[strong date:] #{report.date}
   p #[strong description:] #{report.description}
   p #[strong category:] 
     each val in report.category

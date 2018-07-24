@@ -15,7 +15,7 @@ var ReportSchema = new Schema(
     //firstname
     //mail
     //phone: {type: String, required: false}
-    //date: { type: Date, default: Date.now } //hidden! not a input. 
+    date: { type: String } //hidden! not a input. 
   });
 
 // Virtual for this report instance URL.

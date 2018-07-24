@@ -3,7 +3,12 @@ extends user_layout
 block content
   h1= title
 
+  - var formatted_date = moment(Date.now()).format('DD.MM.YYYY, HH:mm:ss');
+    
   form(method='POST' action='')
+    div.form-group
+      label(for='date') Date:
+      input#date.form-control(type='text', placeholder='Date' name='date' required='true' value=formatted_date readonly )
     div.form-group
       label(for='subject') Subject:
       input#subject.form-control(type='text', placeholder='Subject of report' name='subject' required='true' value=(undefined===report ? '' : report.Subject) )
