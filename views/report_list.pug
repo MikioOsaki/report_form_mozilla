@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each report in report_list
+    li 
+      a(href=report.url) #{report.id} 
+      |  #{report.subject}, {Date}
+
+  else
+    li There are no reports.

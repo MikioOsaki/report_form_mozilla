@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1 bathingspot: #{bathingspot.name}
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 reports
+    
+    dl
+    each report in bathingspot_reports
+      dt 
+        a(href=report.url) #{report.subject}
+      dd #{report.description}
+
+    else
+      p This bathingspot has no reports.
+      
+  hr
+  p
+    a(href=bathingspot.url+'/delete') Delete bathingspot
+  p
+    a(href=bathingspot.url+'/update') Update bathingspot

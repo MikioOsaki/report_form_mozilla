@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1 Category: #{category.name}
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Reports to category #{category.name}
+    
+    ul
+    each report in category_reports
+      li 
+        a(href=report.url) #{report.subject}
+      | #{report.description}
+
+    else
+      p This category has no reports
+
+  hr
+  p
+    a(href=category.url+'/delete') Delete category
+  p
+    a(href=category.url+'/update') Update category

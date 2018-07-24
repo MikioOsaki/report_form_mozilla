@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 #{report.subject} (id:#{report.id})
+  
+  p #[strong bathingspot:] 
+    a(href=report.bathingspot.url) #{report.bathingspot.name}
+  p #[strong description:] #{report.description}
+  p #[strong category:] 
+    each val in report.category
+      a(href=val.url) #{val.name}
+      |, 
+        
+  hr
+  p
+    a(href=report.url+'/delete') Delete report
+  p
+    a(href=report.url+'/update') Update report

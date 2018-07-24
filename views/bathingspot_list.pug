@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each bathingspot in bathingspot_list
+    li 
+      a(href=bathingspot.url) #{bathingspot.name} 
+  else
+    li There are no bathingspots.

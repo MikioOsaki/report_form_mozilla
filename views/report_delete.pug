@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  h1 #{report.subject} (id:#{report.id})
+  
+  p #[strong bathingspot:] 
+    a(href=report.bathingspot.url) #{report.bathingspot.name}
+  p #[strong description:] #{report.description}
+  p #[strong category:] 
+    each val in report.category
+      a(href=val.url) #{val.name}
+      |,  
+    
+    p Do you really want to delete this report?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=report._id )
+
+      button.btn.btn-primary(type='submit') Delete

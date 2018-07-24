@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+  h1 Delete Category: #{category.name}
+  
+  if category_reports.length
+  
+    p #[strong Delete the following raports before attempting to delete this category.]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Reports
+    
+      dl
+      each report in category_reports
+        dt 
+          a(href=report.url) #{report.title}
+        dd #{report.description}
+
+  else
+    p Do you really want to delete this category?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=category._id )
+
+      button.btn.btn-primary(type='submit') Delete
