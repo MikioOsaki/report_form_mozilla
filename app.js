@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var administrationRouter = require('./routes/administration');  //Import routes for "administration" area of site
+var userRouter = require('./routes/user');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/administration', administrationRouter);  // Add administration routes to middleware chain.
+app.use('/user', userRouter );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -144,7 +144,6 @@ exports.report_create_post = [
             report.save(function (err) {
                 if (err) { return next(err); }
                 //successful - redirect to new report record.
-                //res.render('user_success', { title: 'Success', report: report, errors: errors.array() });
                 res.redirect(report.url);
             });
         }

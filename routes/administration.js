@@ -2,38 +2,38 @@ var express = require('express');
 var router = express.Router();
 
 // Require controller modules.
-var report_contorller = require('../controllers/reportController');
+var report_contorller_administration = require('../controllers/reportControllerAdministration');
 var bathingspot_controller = require('../controllers/bathingspotController');
 var category_controller = require('../controllers/categoryController');
 
 /// report ROUTES ///
 
 // GET administration home page.
-router.get('/', report_contorller.index);
+router.get('/', report_contorller_administration.index);
 
 // GET request for creating a report. NOTE This must come before routes that display report (uses id).
-router.get('/report/create', report_contorller.report_create_get);
+router.get('/report/create', report_contorller_administration.report_create_get);
 
 // POST request for creating report.
-router.post('/report/create', report_contorller.report_create_post);
+router.post('/report/create', report_contorller_administration.report_create_post);
 
 // GET request to delete report.
-router.get('/report/:id/delete', report_contorller.report_delete_get);
+router.get('/report/:id/delete', report_contorller_administration.report_delete_get);
 
 // POST request to delete report.
-router.post('/report/:id/delete', report_contorller.report_delete_post);
+router.post('/report/:id/delete', report_contorller_administration.report_delete_post);
 
 // GET request to update report.
-router.get('/report/:id/update', report_contorller.report_update_get);
+router.get('/report/:id/update', report_contorller_administration.report_update_get);
 
 // POST request to update report.
-router.post('/report/:id/update', report_contorller.report_update_post);
+router.post('/report/:id/update', report_contorller_administration.report_update_post);
 
 // GET request for one report.
-router.get('/report/:id', report_contorller.report_detail);
+router.get('/report/:id', report_contorller_administration.report_detail);
 
 // GET request for list of all report.
-router.get('/reports', report_contorller.report_list);
+router.get('/reports', report_contorller_administration.report_list);
 
 /// AUTHOR ROUTES ///
 

@@ -1,0 +1,20 @@
+extends user_layout
+
+block content
+  h1= title
+  p Welcome to #[em BathingspotReporting], a very basic Express website developed on base of a tutorial example on the Mozilla Developer Network.
+
+  h1 Dynamic content
+
+  if error
+    p Error getting dynamic content.
+  else
+    p The Reportingsystem has the following record counts:
+
+    ul
+      li #[strong reports:] !{data.report_count} 
+      li #[strong bathingspots:] !{data.bathingspot_count}
+      li #[strong categories:] !{data.category_count}
+
+  p
+    a(href="user/report/create") Click here the make a report!

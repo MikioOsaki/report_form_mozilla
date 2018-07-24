@@ -1,0 +1,33 @@
+extends user_layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='subject') Subject:
+      input#subject.form-control(type='text', placeholder='Subject of report' name='subject' required='true' value=(undefined===report ? '' : report.Subject) )
+    div.form-group
+      label(for='bathingspot') bathingspot:
+      select#bathingspot.form-control(type='select', placeholder='Select bathingspot' name='bathingspot' required='true' )
+        for bathingspot in bathingspots
+          if report
+            option(value=bathingspot._id selected=(bathingspot._id.toString()==report.bathingspot._id.toString() ? 'selected' : false) ) #{bathingspot.name}
+          else
+            option(value=bathingspot._id) #{bathingspot.name}
+    div.form-group
+      label(for='description') description:
+      input#description.form-control(type='textarea', placeholder='description' name='description' value=(undefined===report ? '' : report.description) required='true')  
+    div.form-group
+      label category:
+      div
+        for category in categories
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='category', id=category._id, value=category._id, checked=category.checked )
+            label(for=category._id) #{category.name}
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
