@@ -1,17 +1,31 @@
 extends layout
 
 block content
-  h1 #{report.subject} (id:#{report.id})
+  h1 #{report.subject}  
+  p Report-ID: #{report.id}
   
-  p #[strong bathingspot:] 
+  p #[strong Bathingspot:] 
     a(href=report.bathingspot.url) #{report.bathingspot.name}
-  p #[strong date:] #{report.date}
-  p #[strong description:] #{report.description}
-  p #[strong category:] 
+  p #[strong Date:] #{report.date}
+  p #[strong Description:] #{report.description}
+  p #[strong Category:] 
     each val in report.category
       a(href=val.url) #{val.name}
       |, 
+  p #[strong Contact data:]
+  p #[strong Firstname:] 
+    if (typeof(report.firstname) !== 'undefined')
+      | #{report.firstname}
+    else 
+      | not given
+  p #[strong Lastname:] 
+    if (typeof(report.lastname) !== 'undefined')
+      | #{report.lastname}
+    else 
+      | not given
         
+  //- wie geht: - undefined===report.firstname ? 'bla' : report.firstname
+
   hr
   p
     a(href=report.url+'/delete') Delete report

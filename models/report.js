@@ -11,7 +11,8 @@ var ReportSchema = new Schema(
     description: { type: String, required: true },
     //location
     //photo array ofBuffer: [Buffer],
-    //lastname
+    firstname: {type: String},
+    lastname: {type: String},
     //firstname
     //mail
     //phone: {type: String, required: false}

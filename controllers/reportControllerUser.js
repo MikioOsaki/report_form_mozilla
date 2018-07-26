@@ -58,6 +58,10 @@ exports.report_create_post = [
     body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
     body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
+    body('firstname').isAlpha().trim().withMessage('First name must be alphabetic.'),
+    body('lastname').isAlpha().trim().withMessage('First name must be alphabetic.'),
+    // body('e-mail').isEmail().trim(),
+    // body('phone').isAlphanumeric().trim(),
 
     // Sanitize fields (using wildcard).
     sanitizeBody('*').trim().escape(),
@@ -75,7 +79,9 @@ exports.report_create_post = [
                 bathingspot: req.body.bathingspot,
                 description: req.body.description,
                 category: req.body.category,
-                date: req.body.date
+                date: req.body.date,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname
             });
 
         if (!errors.isEmpty()) {

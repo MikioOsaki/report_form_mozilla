@@ -92,30 +92,36 @@ exports.report_create_post = [
         next();
     },
 
-       // Validate fields.
-       body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
-       body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
-       body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
-   
-       // Sanitize fields (using wildcard).
-       sanitizeBody('*').trim().escape(),
-   
-       // Process request after validation and sanitization.
-       (req, res, next) => {
-   
-           // Extract the validation errors from a request.
-           const errors = validationResult(req);
-   
-           // Create a Report object with escaped and trimmed data.
-           var report = new Report(
-               {
-                   subject: req.body.subject,
-                   bathingspot: req.body.bathingspot,
-                   description: req.body.description,
-                   category: req.body.category,
-                   date: req.body.date
+    // Validate fields.
+    body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
+    body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
+    body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
+    body('firstname').isAlpha().trim().withMessage('First name must be alphabetic.'),
+    body('lastname').isAlpha().trim().withMessage('First name must be alphabetic.'),
+    // body('e-mail').isEmail().trim(),
+    // body('phone').isAlphanumeric().trim(),
 
-               });
+    // Sanitize fields (using wildcard).
+    sanitizeBody('*').trim().escape(),
+
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+
+        // Create a Report object with escaped and trimmed data.
+        var report = new Report(
+            {
+                subject: req.body.subject,
+                bathingspot: req.body.bathingspot,
+                description: req.body.description,
+                category: req.body.category,
+                date: req.body.date,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname
+
+            });
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/error messages.
@@ -247,11 +253,17 @@ exports.report_update_post = [
     body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
     body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
+    body('firstname').isAlpha().trim().withMessage('First name must be alphabetic.'),
+    body('lastname').isAlpha().trim().withMessage('First name must be alphabetic.'),
+    // body('e-mail').isEmail().trim(),
+    // body('phone').isAlphanumeric().trim(),
 
     // Sanitize fields.
     sanitizeBody('subject').trim().escape(),
     sanitizeBody('bathingspot').trim().escape(),
     sanitizeBody('description').trim().escape(),
+    sanitizeBody('firstname').trim().escape(),
+    sanitizeBody('lastname').trim().escape(),
     sanitizeBody('category.*').trim().escape(),
 
     // Process request after validation and sanitization.
@@ -267,6 +279,8 @@ exports.report_update_post = [
                 bathingspot: req.body.bathingspot,
                 description: req.body.description,
                 category: (typeof req.body.category === 'undefined') ? [] : req.body.category,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
                 _id: req.params.id // This is required, or a new ID will be assigned!
             });
 
