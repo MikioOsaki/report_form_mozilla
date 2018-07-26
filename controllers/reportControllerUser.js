@@ -58,8 +58,10 @@ exports.report_create_post = [
     body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
     body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
-    body('firstname').isAlpha().trim().withMessage('Firstname must be alphabetic.'),
-    body('lastname').isAlpha().trim().withMessage('Lastname must be alphabetic.'),
+    body('firstname').isAlpha(['de-DE']).optional({checkFalsy:true}).withMessage('Firstname must be alphabetic ').trim(),
+    body('lastname').isAlpha(['de-DE','ar-DZ']).optional({checkFalsy:true}).withMessage('Lastname must be alphabetic ').trim(),
+    // geht aber lässt keine Umlaute zu und auch keine - ..göring-eckardt etc.
+    // isAlpha(['de-DE','ar-DZ']).optional({checkFalsy:true}).withMessage('Lastname must be alphabetic ').trim(),
     // body('e-mail').isEmail().trim(),
     // body('phone').isAlphanumeric().trim(),
 

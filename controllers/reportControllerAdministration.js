@@ -96,8 +96,8 @@ exports.report_create_post = [
     body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
     body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
-    body('firstname').isAlpha().trim().withMessage('Firstname must be alphabetic.'),
-    body('lastname').isAlpha().trim().withMessage('Lastname must be alphabetic.'),
+    body('firstname').trim(),
+    body('lastname').trim(),
     // body('e-mail').isEmail().trim(),
     // body('phone').isAlphanumeric().trim(),
 
@@ -253,8 +253,8 @@ exports.report_update_post = [
     body('subject', 'Subject must not be empty.').isLength({ min: 1 }).trim(),
     body('bathingspot', 'Bathingspot must not be empty.').isLength({ min: 1 }).trim(),
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
-    body('firstname').isAlpha().trim().withMessage('Firstname must be alphabetic.'),
-    body('lastname').isAlpha().trim().withMessage('Lastname must be alphabetic.'),
+    body('firstname').trim(),
+    body('lastname').trim(),
     // body('e-mail').isEmail().trim(),
     // body('phone').isAlphanumeric().trim(),
 
