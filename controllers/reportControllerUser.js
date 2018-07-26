@@ -100,8 +100,8 @@ exports.report_create_post = [
 
                 // Mark our selected categories as checked.
                 for (let i = 0; i < results.categories.length; i++) {
-                    if (report.category.indexOf(results.category[i]._id) > -1) {
-                        results.category[i].checked = 'true';
+                    if (report.category.indexOf(results.categories[i]._id) > -1) {
+                        results.categories[i].checked = 'true';
                     }
                 }
                 res.render('user_report_form', { title: 'Create Report', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });

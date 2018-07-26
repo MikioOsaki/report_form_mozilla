@@ -139,8 +139,8 @@ exports.report_create_post = [
 
                 // Mark our selected categories as checked.
                 for (let i = 0; i < results.categories.length; i++) {
-                    if (report.category.indexOf(results.category[i]._id) > -1) {
-                        results.category[i].checked = 'true';
+                    if (report.category.indexOf(results.categories[i]._id) > -1) {
+                        results.categories[i].checked = 'true';
                     }
                 }
                 res.render('report_form', { title: 'Create Report', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
@@ -224,8 +224,8 @@ exports.report_update_get = function (req, res, next) {
         // Mark our selected categories as checked.
         for (var all_g_iter = 0; all_g_iter < results.categories.length; all_g_iter++) {
             for (var report_g_iter = 0; report_g_iter < results.report.category.length; report_g_iter++) {
-                if (results.category[all_g_iter]._id.toString() == results.report.category[report_g_iter]._id.toString()) {
-                    results.category[all_g_iter].checked = 'true';
+                if (results.categories[all_g_iter]._id.toString() == results.report.categories[report_g_iter]._id.toString()) {
+                    results.categories[all_g_iter].checked = 'true';
                 }
             }
         }
