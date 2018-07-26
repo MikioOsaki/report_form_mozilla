@@ -11,7 +11,7 @@ block content
       input#date.form-control(type='text', placeholder='Date' name='date' required='true' value=formatted_date readonly )
     div.form-group
       label(for='subject') Subject:
-      input#subject.form-control(type='text', placeholder='Subject of report' name='subject' required='true' value=(undefined===report ? '' : report.Subject) )
+      input#subject.form-control(type='text', placeholder='Subject of report' name='subject' required='true' value=(undefined===report ? '' : report.subject) )
     div.form-group
       label(for='bathingspot') bathingspot:
       select#bathingspot.form-control(type='select', placeholder='Select bathingspot' name='bathingspot' required='true' )
