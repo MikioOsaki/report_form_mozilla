@@ -224,7 +224,7 @@ exports.report_update_get = function (req, res, next) {
         // Mark our selected categories as checked.
         for (var all_g_iter = 0; all_g_iter < results.categories.length; all_g_iter++) {
             for (var report_g_iter = 0; report_g_iter < results.report.category.length; report_g_iter++) {
-                if (results.categories[all_g_iter]._id.toString() == results.report.categories[report_g_iter]._id.toString()) {
+                if (results.categories[all_g_iter]._id.toString() == results.report.category[report_g_iter]._id.toString()) {
                     results.categories[all_g_iter].checked = 'true';
                 }
             }
