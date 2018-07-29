@@ -11,12 +11,11 @@ var ReportSchema = new Schema(
     description: { type: String, required: true },
     //location
     //photo array ofBuffer: [Buffer],
-    firstname: {type: String},
-    lastname: {type: String},
-    //firstname
-    //mail
-    //phone: {type: String, required: false}
-    date: { type: String } //hidden! not a input. 
+    firstname: { type: String },
+    lastname: { type: String },
+    email: { type: String },
+    phone: { type: String },
+    date: { type: String } //hidden! not an input. 
   });
 
 // Virtual for this report instance URL.

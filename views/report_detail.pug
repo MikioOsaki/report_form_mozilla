@@ -23,6 +23,16 @@ block content
       | #{report.lastname}
     else 
       | not given
+  p #[strong E-Mail:] 
+    if (typeof(report.email) !== 'undefined')
+      | #{report.email}
+    else 
+      | not given
+  p #[strong Phone:] 
+    if (typeof(report.phone) !== 'undefined')
+      | #{report.phone}
+    else 
+      | not given
         
   //- wie geht: - undefined===report.firstname ? 'bla' : report.firstname
 

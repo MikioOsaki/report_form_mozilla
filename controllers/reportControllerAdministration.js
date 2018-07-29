@@ -98,8 +98,8 @@ exports.report_create_post = [
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
     body('firstname').trim(),
     body('lastname').trim(),
-    // body('e-mail').isEmail().trim(),
-    // body('phone').isAlphanumeric().trim(),
+    body('email').trim(),
+    body('phone').trim(),
 
     // Sanitize fields (using wildcard).
     sanitizeBody('*').trim().escape(),
@@ -119,8 +119,9 @@ exports.report_create_post = [
                 category: req.body.category,
                 date: req.body.date,
                 firstname: req.body.firstname,
-                lastname: req.body.lastname
-
+                lastname: req.body.lastname,
+                email: req.body.email,
+                phone: req.body.phone
             });
 
         if (!errors.isEmpty()) {
@@ -255,8 +256,8 @@ exports.report_update_post = [
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
     body('firstname').trim(),
     body('lastname').trim(),
-    // body('e-mail').isEmail().trim(),
-    // body('phone').isAlphanumeric().trim(),
+    body('email').trim(),
+    body('phone').trim(),
 
     // Sanitize fields.
     sanitizeBody('subject').trim().escape(),
@@ -264,6 +265,8 @@ exports.report_update_post = [
     sanitizeBody('description').trim().escape(),
     sanitizeBody('firstname').trim().escape(),
     sanitizeBody('lastname').trim().escape(),
+    sanitizeBody('email').trim().escape(),
+    sanitizeBody('phone').trim().escape(),
     sanitizeBody('category.*').trim().escape(),
 
     // Process request after validation and sanitization.
@@ -281,6 +284,8 @@ exports.report_update_post = [
                 category: (typeof req.body.category === 'undefined') ? [] : req.body.category,
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
+                email: req.body.email,
+                phone: req.body.phone,
                 _id: req.params.id // This is required, or a new ID will be assigned!
             });
 

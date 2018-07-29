@@ -1,5 +1,6 @@
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
+var expressValidator  = require('express-validator');
 var Report = require('../models/report');
 var Bathingspot = require('../models/bathingspot');
 var Category = require('../models/category');
@@ -60,10 +61,10 @@ exports.report_create_post = [
     body('description', 'Description must not be empty.').isLength({ min: 1 }).trim(),
     body('firstname').trim(),
     body('lastname').trim(),
-    // geht aber lässt keine Umlaute zu und auch keine - ..göring-eckardt etc.
+    body('email').trim(),
+    body('phone').trim(),
     // isAlpha(['de-DE','ar-DZ']).optional({checkFalsy:true}).withMessage('Lastname must be alphabetic ').trim(),
-    // body('e-mail').isEmail().trim(),
-    // body('phone').isAlphanumeric().trim(),
+    // geht aber lässt keine Umlaute zu und auch keine - ..göring-eckardt etc.
 
     // Sanitize fields (using wildcard).
     sanitizeBody('*').trim().escape(),
@@ -83,7 +84,9 @@ exports.report_create_post = [
                 category: req.body.category,
                 date: req.body.date,
                 firstname: req.body.firstname,
-                lastname: req.body.lastname
+                lastname: req.body.lastname,
+                email: req.body.email,
+                phone: req.body.phone
             });
 
         if (!errors.isEmpty()) {

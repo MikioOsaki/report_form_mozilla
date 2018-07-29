@@ -36,6 +36,12 @@ block content
     div.form-group
       label(for='lastname') Lastname:
       input#lastname.form-control(type='text', placeholder='Lastname' name='lastname' value=(undefined===report ? '' : report.lastname) )
+    div.form-group
+      label(for='email') Email:
+      input#email.form-control(type='email', placeholder='Email' name='email' value=(undefined===report ? '' : report.email) )
+    div.form-group
+      label(for='phone') Phone:
+      input#phone.form-control(type='tel', placeholder='Phone' name='phone' value=(undefined===report ? '' : report.phone) )
     button.btn.btn-primary(type='submit') Submit
 
   if errors 
