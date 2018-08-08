@@ -28,6 +28,7 @@ exports.user_index = function (req, res) {
 exports.report_create_get = function (req, res, next) {
 
     // Get all bathingspots and categories, which we can use for adding to our report.
+    // async.parallel( Object or Array - each with callback, [err, results]) 
     async.parallel({
         bathingspots: function (callback) {
             Bathingspot.find(callback);
