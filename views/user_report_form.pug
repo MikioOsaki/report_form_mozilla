@@ -13,7 +13,7 @@ block content
       label(for='subject') Subject:
       input#subject.form-control(type='text', placeholder='Subject of report' name='subject' required='true' value=(undefined===report ? '' : report.subject) )
     div.form-group
-      label(for='bathingspot') bathingspot:
+      label(for='bathingspot') Bathingspot:
       select#bathingspot.form-control(type='select', placeholder='Select bathingspot' name='bathingspot' required='true' )
         for bathingspot in bathingspots
           if report
@@ -21,10 +21,10 @@ block content
           else
             option(value=bathingspot._id) #{bathingspot.name}
     div.form-group
-      label(for='description') description:
-      input#description.form-control(type='textarea', placeholder='description' name='description' value=(undefined===report ? '' : report.description) required='true')  
+      label(for='description') Description:
+      input#description.form-control(type='textarea', placeholder='Description' name='description' value=(undefined===report ? '' : report.description) required='true')  
     div.form-group
-      label category:
+      label Category:
       div
         for category in categories
           div(style='display: inline; padding-right:10px;')
