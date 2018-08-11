@@ -1,3 +1,4 @@
+//  Roughly, it would translate into this: const body = require("express-validator/check").body; and same for validationResult
 const { body, validationResult } = require('express-validator/check'); // destruturing assignment syntax
 const { sanitizeBody } = require('express-validator/filter'); // destructuring assignment syntax
 var expressValidator  = require('express-validator');
