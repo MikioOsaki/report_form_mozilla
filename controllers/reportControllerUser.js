@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+const { body, validationResult } = require('express-validator/check'); // destruturing assignment syntax
+const { sanitizeBody } = require('express-validator/filter'); // destructuring assignment syntax
 var expressValidator  = require('express-validator');
 var Report = require('../models/report');
 var Bathingspot = require('../models/bathingspot');
