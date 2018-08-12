@@ -2,8 +2,9 @@ extends layout
 
 block content
 
-  h1 #{report.subject} (id:#{report.id})
+  h1 #{report.subject}
   
+  p #[strong id:] #{report.id}
   p #[strong bathingspot:] 
     a(href=report.bathingspot.url) #{report.bathingspot.name}
   p #[strong date:] #{report.date}
