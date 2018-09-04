@@ -74,7 +74,7 @@ exports.report_create_get = function (req, res, next) {
         },
     }, function (err, results) {
         if (err) { return next(err); }
-        res.render('report_form', { title: 'Create Report', bathingspots: results.bathingspots, categories: results.categories });
+        res.render('report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories });
     });
 
 };
@@ -144,7 +144,7 @@ exports.report_create_post = [
                         results.categories[i].checked = 'true';
                     }
                 }
-                res.render('report_form', { title: 'Create Report', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
+                res.render('report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
             });
             return;
         }

@@ -39,7 +39,7 @@ exports.report_create_get = function (req, res, next) {
         },
     }, function (err, results) {
         if (err) { return next(err); }
-        res.render('user_report_form', { title: 'Create Report', bathingspots: results.bathingspots, categories: results.categories });
+        res.render('user_report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories });
     });
 
 };
@@ -111,7 +111,7 @@ exports.report_create_post = [
                         results.categories[i].checked = 'true';
                     }
                 }
-                res.render('user_report_form', { title: 'Create Report', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
+                res.render('user_report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
             });
             return;
         }
@@ -120,7 +120,7 @@ exports.report_create_post = [
             report.save(function (err) {
                 if (err) { return next(err); }
                 //successful - redirect to new report record.
-                res.render('user_success', { title: 'Success', report: report, errors: errors.array() });
+                res.render('user_success', { title: 'Erfolgreich versendet', report: report, errors: errors.array() });
                 //res.redirect(report.url);
             });
         }
