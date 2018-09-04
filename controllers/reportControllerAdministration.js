@@ -20,7 +20,7 @@ exports.index = function (req, res) {
             Category.count({}, callback);
         },
     }, function (err, results) {
-        res.render('index', { title: 'Berliner Badestellen Reportingsystem - Home', error: err, data: results });
+        res.render('index', { title: 'Berliner Badestellen Reportingsystem - Startseite', error: err, data: results });
     });
 };
 
@@ -32,7 +32,7 @@ exports.report_list = function (req, res, next) {
         .exec(function (err, report_list) {
             if (err) { return next(err); }
             //Successful, so render
-            res.render('report_list', { title: 'Report List', report_list: report_list });
+            res.render('report_list', { title: 'Reportliste', report_list: report_list });
         });
 
 };
@@ -230,7 +230,7 @@ exports.report_update_get = function (req, res, next) {
                 }
             }
         }
-        res.render('report_form', { title: 'Update Report', bathingspots: results.bathingspots, categories: results.categories, report: results.report });
+        res.render('report_form', { title: 'Report bearbeiten', bathingspots: results.bathingspots, categories: results.categories, report: results.report });
     });
 
 };
@@ -309,7 +309,7 @@ exports.report_update_post = [
                         results.categories[i].checked = 'true';
                     }
                 }
-                res.render('report_form', { title: 'Update Report', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
+                res.render('report_form', { title: 'Report bearbeiten', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
             });
             return;
         }

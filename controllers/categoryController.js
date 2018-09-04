@@ -11,7 +11,7 @@ exports.category_list = function (req, res) {
         .sort([['name', 'ascending']])
         .exec(function (err, category_list) {
             if (err) { return next(err); }
-            res.render('category_list', { title: 'Category List', category_list: category_list });
+            res.render('category_list', { title: 'Liste der Kategorien', category_list: category_list });
         });
 };
 
@@ -44,7 +44,7 @@ exports.category_detail = function (req, res, next) {
 
 // Display Genre create form on GET.
 exports.category_create_get = function (req, res, next) {
-    res.render('category_form', { title: 'Create Category' });
+    res.render('category_form', { title: 'Neue Kategorie hinzufügen' });
 };
 
 // Handle Genre create on POST.
@@ -70,7 +70,7 @@ exports.category_create_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values/error messages.
-            res.render('category_form', { title: 'Create Category', category: category, errors: errors.array() });
+            res.render('category_form', { title: 'Neue Kategorie hinzufügen', category: category, errors: errors.array() });
             return;
         }
         else {
@@ -162,7 +162,7 @@ exports.category_update_get = function (req, res, next) {
             return next(err);
         }
         // Success.
-        res.render('category_form', { title: 'Update Category', category: category });
+        res.render('category_form', { title: 'Kategorie bearbeiten', category: category });
     });
 
 };
@@ -193,7 +193,7 @@ exports.category_update_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
-            res.render('category_form', { title: 'Update Category', category: category, errors: errors.array() });
+            res.render('category_form', { title: 'Kategorie bearbeiten', category: category, errors: errors.array() });
             return;
         }
         else {

@@ -17,24 +17,22 @@ html(lang='en')
           block sidebar
             ul(class='sidebar-nav')
               li 
-                a(href='/administration') Home
+                a(href='/administration') Reportauswertung - Startseite
               li
-                a(href='/user/report/create') User
-              li
-                hr
-              li
-                a(href='/administration/categories') All categories
-              li
-                a(href='/administration/bathingspots') All bathingspots
-              li
-                a(href='/administration/reports') All reports
+                a(href='/user/report/create') Neuen Report erstellen
               li
                 hr
               li
-                a(href='/administration/category/create') Create new category
+                a(href='/administration/reports') Alle Reporte
+              li
+                a(href='/administration/bathingspots') Alle Badestellen
+              li
+                a(href='/administration/categories') Alle Kategorien
+              li
+                hr
+              li
+                a(href='/administration/category/create') Neue Kategorie hinzufügen
               li  
-                a(href='/administration/bathingspot/create') Create new bathingspot
-              li  
-                a(href='/user/report/create') Create new report
+                a(href='/administration/bathingspot/create') Neue Badestelle hinzufügen
         div(class='col-sm-10')
           block content

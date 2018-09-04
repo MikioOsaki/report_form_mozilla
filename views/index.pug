@@ -2,16 +2,16 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #[em BathingspotReporting], a very basic Express website developed on base of a tutorial example on the Mozilla Developer Network.
+  p Willkommen in der Auswertungsansicht der Badegewässer Reporte
 
-  h1 Dynamic content
+  h1 Übersicht der Daten
 
   if error
     p Error getting dynamic content.
   else
-    p The Reportingsystem has the following record counts:
+    p Das Reportingsystem besitzt derzeit folgende Einträge:
 
     ul
-      li #[strong reports:] !{data.report_count} 
-      li #[strong bathingspots:] !{data.bathingspot_count}
-      li #[strong categories:] !{data.category_count}
+      li #[strong Reporte:] !{data.report_count} 
+      li #[strong Badestellen:] !{data.bathingspot_count}
+      li #[strong Kategorien:] !{data.category_count}

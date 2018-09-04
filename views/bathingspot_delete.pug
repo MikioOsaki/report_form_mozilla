@@ -6,11 +6,11 @@ block content
   
   if bathingspot_reports.length
   
-    p #[strong Delete the following reports before attempting to delete this bathingspot.]
+    p #[strong Bevor diese Badestelle gelöscht werden kann, müssen alle zugehörigen Reporte gelöscht werden.]
   
     div(style='margin-left:20px;margin-top:20px')
 
-      h4 reports
+      h4 Reporte zu dieser Badestelle
     
       dl
       each report in bathingspot_reports
@@ -19,10 +19,10 @@ block content
         dd #{report.description}
 
   else
-    p Do you really want to delete this bathingspot?
+    p Möchten Sie diese Badestelle wirklich löschen?
     
     form(method='POST' action='')
       div.form-group
         input#bathingspotid.form-control(type='hidden',name='bathingspotid', required='true', value=bathingspot._id )
 
-      button.btn.btn-primary(type='submit') Delete
+      button.btn.btn-primary(type='submit') Löschen

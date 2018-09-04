@@ -6,19 +6,19 @@ block content
   
   p #[strong Bathingspot:] 
     a(href=report.bathingspot.url) #{report.bathingspot.name}
-  p #[strong Date:] #{report.date}
-  p #[strong Description:] #{report.description}
-  p #[strong Category:] 
+  p #[strong Datum:] #{report.date}
+  p #[strong Beschreibung:] #{report.description}
+  p #[strong Kategorie:] 
     each val in report.category
       a(href=val.url) #{val.name}
       |, 
-  p #[strong Contact data:]
-  p #[strong Firstname:] 
+  p #[strong Kontaktdaten:]
+  p #[strong Vorname:] 
     if (typeof(report.firstname) !== 'undefined')
       | #{report.firstname}
     else 
       | not given
-  p #[strong Lastname:] 
+  p #[strong Nachname:] 
     if (typeof(report.lastname) !== 'undefined')
       | #{report.lastname}
     else 
@@ -28,7 +28,7 @@ block content
       | #{report.email}
     else 
       | not given
-  p #[strong Phone:] 
+  p #[strong Telefonnummer:] 
     if (typeof(report.phone) !== 'undefined')
       | #{report.phone}
     else 
@@ -38,6 +38,6 @@ block content
 
   hr
   p
-    a(href=report.url+'/delete') Delete report
+    a(href=report.url+'/delete') Report löschen
   p
-    a(href=report.url+'/update') Update report
+    a(href=report.url+'/update') Report bearbeiten

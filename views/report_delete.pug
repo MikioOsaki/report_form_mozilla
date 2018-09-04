@@ -4,20 +4,20 @@ block content
 
   h1 #{report.subject}
   
-  p #[strong id:] #{report.id}
-  p #[strong bathingspot:] 
+  p #[strong ID:] #{report.id}
+  p #[strong Badestelle:] 
     a(href=report.bathingspot.url) #{report.bathingspot.name}
-  p #[strong date:] #{report.date}
-  p #[strong description:] #{report.description}
-  p #[strong category:] 
+  p #[strong Datum:] #{report.date}
+  p #[strong Beschreibung:] #{report.description}
+  p #[strong Kategorie:] 
     each val in report.category
       a(href=val.url) #{val.name}
       |,  
     
-    p Do you really want to delete this report?
+    p Möchten Sie diesen Report wirklich löschen?
     
     form(method='POST' action='')
       div.form-group
         input#id.form-control(type='hidden',name='id', required='true', value=report._id )
 
-      button.btn.btn-primary(type='submit') Delete
+      button.btn.btn-primary(type='submit') Löschen

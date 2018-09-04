@@ -11,7 +11,7 @@ exports.bathingspot_list = function (req, res) {
         .sort([['name', 'ascending']])
         .exec(function (err, bathingspot_list) {
             if (err) { return next(err); }
-            res.render('bathingspot_list', { title: 'Bathingspot List', bathingspot_list: bathingspot_list });
+            res.render('bathingspot_list', { title: 'Liste der Badestellen', bathingspot_list: bathingspot_list });
         });
 };
 
@@ -44,7 +44,7 @@ exports.bathingspot_detail = function (req, res, next) {
 
 // Display Category create form on GET.
 exports.bathingspot_create_get = function (req, res, next) {
-    res.render('bathingspot_form', { title: 'Create Bathingspot' });
+    res.render('bathingspot_form', { title: 'Neue Badestelle hinzufügen' });
 };
 
 // Handle Category create on POST.
@@ -115,7 +115,7 @@ exports.bathingspot_delete_get = function (req, res, next) {
             res.redirect('/administration/bathingspots');
         }
         // Successful, so render.
-        res.render('bathingspot_delete', { title: 'Delete Bathingspot', bathingspot: results.bathingspot, bathingspot_reports: results.bathingspots_reports });
+        res.render('bathingspot_delete', { title: 'Badestelle löschen', bathingspot: results.bathingspot, bathingspot_reports: results.bathingspots_reports });
     });
 
 };
@@ -135,7 +135,7 @@ exports.bathingspot_delete_post = function (req, res, next) {
         // Success.
         if (results.bathingspots_reports.length > 0) {
             // Bathingspot has reports. Render in same way as for GET route.
-            res.render('bathingspot_delete', { title: 'Delete Bathingspot', bathingspot: results.bathingspot, bathingspot_reports: results.bathingspots_reports });
+            res.render('bathingspot_delete', { title: 'Badestelle löschen', bathingspot: results.bathingspot, bathingspot_reports: results.bathingspots_reports });
             return;
         }
         else {
@@ -162,7 +162,7 @@ exports.bathingspot_update_get = function (req, res, next) {
             return next(err);
         }
         // Success.
-        res.render('bathingspot_form', { title: 'Update Bathingspot', bathingspot: bathingspot });
+        res.render('bathingspot_form', { title: 'Badestelle bearbeiten', bathingspot: bathingspot });
 
     });
 };
@@ -182,7 +182,7 @@ exports.bathingspot_update_post = [
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
-        // Create Bathingspot object with escaped and trimmed data (and the old id!)
+        // Neue Badestelle hinzufügen object with escaped and trimmed data (and the old id!)
         var bathingspot = new Bathingspot(
             {
                 name: req.body.name,
@@ -192,7 +192,7 @@ exports.bathingspot_update_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
-            res.render('bathingspot_form', { title: 'Update Bathingspot', bathingspot: bathingspot, errors: errors.array() });
+            res.render('bathingspot_form', { title: 'Badestelle Bearbeiten', bathingspot: bathingspot, errors: errors.array() });
             return;
         }
         else {

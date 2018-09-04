@@ -2,11 +2,11 @@ extends layout
 
 block content
 
-  h1 bathingspot: #{bathingspot.name}
+  h1 Badestelle: #{bathingspot.name}
   
   div(style='margin-left:20px;margin-top:20px')
 
-    h4 reports
+    h4 Reporte zu dieser Badestelle
     
     dl
     each report in bathingspot_reports
@@ -15,10 +15,10 @@ block content
       dd #{report.description}
 
     else
-      p This bathingspot has no reports.
+      p Zu dieser Badestelle liegen keine Reporte vor.
       
   hr
   p
-    a(href=bathingspot.url+'/delete') Delete bathingspot
+    a(href=bathingspot.url+'/delete') Badestelle löschen
   p
-    a(href=bathingspot.url+'/update') Update bathingspot
+    a(href=bathingspot.url+'/update') Badestelle bearbeiten

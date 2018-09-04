@@ -2,15 +2,15 @@ extends layout
 
 block content
 
-  h1 Delete Category: #{category.name}
+  h1 Kategorie löschen: #{category.name}
   
   if category_reports.length
   
-    p #[strong Delete the following raports before attempting to delete this category.]
+    p #[strong Bevor diese Kategorie gelöscht werden kann, müssen alle zugehörigen Reporte gelöscht werden.]
   
     div(style='margin-left:20px;margin-top:20px')
 
-      h4 Reports
+      h4 Reporte mit dieser Kategorie
     
       dl
       each report in category_reports
@@ -19,10 +19,10 @@ block content
         dd #{report.description}
 
   else
-    p Do you really want to delete this category?
+    p Möchten Sie diese Kategorie wirklich löschen?
     
     form(method='POST' action='')
       div.form-group
         input#id.form-control(type='hidden',name='id', required='true', value=category._id )
 
-      button.btn.btn-primary(type='submit') Delete
+      button.btn.btn-primary(type='submit') Löschen

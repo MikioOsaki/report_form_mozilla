@@ -21,7 +21,7 @@ exports.user_index = function (req, res) {
             Category.count({}, callback);
         },
     }, function (err, results) {
-        res.render('user_index', { title: 'Berliner Badestellen Reportingsystem - Home', error: err, data: results });
+        res.render('user_index', { title: 'Berliner Badestellen Reportingsystem - Startseite', error: err, data: results });
     });
 };
 
@@ -39,7 +39,7 @@ exports.report_create_get = function (req, res, next) {
         },
     }, function (err, results) {
         if (err) { return next(err); }
-        res.render('user_report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories });
+        res.render('report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories });
     });
 
 };
@@ -111,7 +111,7 @@ exports.report_create_post = [
                         results.categories[i].checked = 'true';
                     }
                 }
-                res.render('user_report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
+                res.render('report_form', { title: 'Report erstellen', bathingspots: results.bathingspots, categories: results.categories, report: report, errors: errors.array() });
             });
             return;
         }

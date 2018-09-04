@@ -6,11 +6,11 @@ block content
   ul
   each report in report_list
     li
-      |Subject: 
+      |Betreff: 
       a(href=report.url) #{report.subject}, 
-      |Bathingspot: 
+      |Badestelle: 
       a(href=report.bathingspot.url) #{report.bathingspot.name}, 
-      |Date: #{report.date}
+      |Datum: #{report.date}
 
   else
-    li There are no reports.
+    li Es liegen keine Reporte vor.
